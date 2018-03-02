@@ -17,6 +17,7 @@ After sourcing the SQL file, run with: python3 mysql_parallel_load.py dummy_data
 In my own tests, best performance was achieved with 4 load threads.
 
 *** IMPORTANT ***
-If you are using InnoDB, you need to set innodb_autoinc_lock_mode to 2, or else each "LOAD DATA INFILE " will lock entire table.
+
+If you are using InnoDB, you need to set innodb_autoinc_lock_mode to 2, otherwise each "LOAD DATA INFILE " will lock the entire table, defeating the purporse of this tool.
 When you use this AUTO_INCREMENT mode, there are some caveats for statement-based replication.
 Check https://dev.mysql.com/doc/refman/5.7/en/innodb-auto-increment-handling.html for the details ("InnoDB AUTO_INCREMENT Lock Mode Usage Implications").
